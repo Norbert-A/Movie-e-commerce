@@ -69,7 +69,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/games/**").addResourceLocations("/WEB-INF/games/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
     }
 
 }
