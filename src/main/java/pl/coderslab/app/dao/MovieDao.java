@@ -10,17 +10,18 @@ public class MovieDao {
     private List<Movie> movieList;
 
     public List<Movie> getMovieList() {
-        Movie braveheart = new Movie();
+        Movie aquaman = new Movie();
 
-        braveheart.setMovieTitle("Braveheart");
-        braveheart.setMovieCategory("Thriller");
-        braveheart.setMovieDescription("Warrior");
-        braveheart.setMoviePrice(40);
-        braveheart.setMovieStatus("available");
-        braveheart.setMovieRating(8);
+        aquaman.setMovieTitle("Aquaman");
+        aquaman.setMovieCategory("Action");
+        aquaman.setMovieDescription("Water vs Earth");
+        aquaman.setMovieTrailerId("WDkg3h8PCVU");
+        aquaman.setMoviePrice(19.99);
+        aquaman.setMovieStatus("available");
+        aquaman.setMovieRating(8.5);
 
         movieList = new ArrayList<Movie>();
-        movieList.add(braveheart);
+        movieList.add(aquaman);
 
         return movieList;
 

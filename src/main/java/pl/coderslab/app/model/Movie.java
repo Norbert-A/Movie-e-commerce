@@ -5,9 +5,18 @@ public class Movie {
     private String movieTitle;
     private String movieCategory;
     private String movieDescription;
+    private String movieTrailerId;
     private double moviePrice;
     private String movieStatus;
     private double movieRating;
+
+    public String getMovieTrailerId() {
+        return movieTrailerId;
+    }
+
+    public void setMovieTrailerId(String movieTrailerId) {
+        this.movieTrailerId = movieTrailerId;
+    }
 
     public double getMoviePrice() {
         return moviePrice;

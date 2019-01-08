@@ -15,7 +15,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home() {
-        return "trailerCode";
+        return "home";
     }
 
     @RequestMapping("/movieList")

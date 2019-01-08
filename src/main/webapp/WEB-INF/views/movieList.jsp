@@ -11,6 +11,11 @@
     <meta name="generator" content="Jekyll v3.8.5">
     <title>Movie List</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
 
@@ -57,22 +62,12 @@
 </div>
 
 
-
-<a href="#play" onclick="trailerPopup('WDkg3h8PCVU')">Trailer</a>
-
-<script>
-    function trailerPopup(id) {
-        window.open('https://www.youtube.com/embed/'+id, 'popup', config='height=315,width=560')
-    }
-</script>
-
-
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
             <h2></h2>
 
-            <p class="lead">Let's get rollin'!!</p>
+            <p class="lead">Movie List :)</p>
         </div>
 
         <table class="table table-striped table-hover">
@@ -80,6 +75,7 @@
             <tr style="background-color: #0c5460">
                 <th>Picture</th>
                 <th>Title</th>
+                <th>Trailer</th>
                 <th>Category</th>
                 <th>Rating</th>
                 <th>Price</th>
@@ -87,8 +83,23 @@
             </thead>
             <c:forEach items="${movies}" var="movie">
                 <tr>
-                    <td>---</td>
+                    <td>img.
+                    </td>
                     <td>${movie.movieTitle}</td>
+                    <td><a href="#videoPopup" class="button more" id="video">
+                        <i class="fa fa-play-circle">&nbsp;</i></a>
+                        <div id="videoPopup" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
+                            <iframe width="853" height="480"
+                                    src="https://www.youtube.com/embed/${movie.movieTrailerId}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                            </iframe>
+                            <script>
+                                $('#video').magnificPopup({})
+                            </script>
+                        </div>
+                    </td>
                     <td>${movie.movieCategory}</td>
                     <td>${movie.movieRating}</td>
                     <td>${movie.moviePrice} $</td>
