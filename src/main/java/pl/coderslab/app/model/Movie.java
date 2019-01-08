@@ -2,13 +2,49 @@ package pl.coderslab.app.model;
 
 public class Movie {
 
+    private int movieId;
     private String movieTitle;
     private String movieCategory;
     private String movieDescription;
+    private int movieDuration;
+    private String movieDirector;
+    private String movieStars;
     private String movieTrailerId;
     private double moviePrice;
     private String movieStatus;
     private double movieRating;
+
+    public String getMovieDirector() {
+        return movieDirector;
+    }
+
+    public void setMovieDirector(String movieDirector) {
+        this.movieDirector = movieDirector;
+    }
+
+    public int getMovieDuration() {
+        return movieDuration;
+    }
+
+    public void setMovieDuration(int movieDuration) {
+        this.movieDuration = movieDuration;
+    }
+
+    public String getMovieStars() {
+        return movieStars;
+    }
+
+    public void setMovieStars(String movieStars) {
+        this.movieStars = movieStars;
+    }
+
+    public int getMovieId() {
+        return movieId;
+    }
+
+    public void setMovieId(int movieId) {
+        this.movieId = movieId;
+    }
 
     public String getMovieTrailerId() {
         return movieTrailerId;
