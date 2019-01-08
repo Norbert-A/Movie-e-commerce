@@ -56,6 +56,17 @@
     </nav>
 </div>
 
+
+
+<a href="#play" onclick="trailerPopup('WDkg3h8PCVU')">Trailer</a>
+
+<script>
+    function trailerPopup(id) {
+        window.open('https://www.youtube.com/embed/'+id, 'popup', config='height=315,width=560')
+    }
+</script>
+
+
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
