@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="#" alt="image" style="width: 100%; height: 78%;"/>
+                    <img src="#" alt="image" style="width: 100%; height: 77%;"/>
                 </div>
                 <div class="col-md-5">
                     <h3>${movie.movieTitle}</h3>
@@ -36,11 +36,11 @@
                         </script>
                     </div>
                     </p>
-                    <p><strong>Category:</strong>${movie.movieCategory}</p>
-                    <p><strong>Director:</strong>${movie.movieDirector}</p>
-                    <p><strong>Stars:</strong>${movie.movieStars}</p>
-                    <p><strong>Duration:</strong>${movie.movieDuration}&nbsp;min</p>
-                    <p><strong>Rating:</strong>${movie.movieRating}</p>
+                    <p><strong>Category:&nbsp;</strong>${movie.movieCategory}</p>
+                    <p><strong>Director:&nbsp;</strong>${movie.movieDirector}</p>
+                    <p><strong>Stars:&nbsp;</strong>${movie.movieStars}</p>
+                    <p><strong>Duration:&nbsp;</strong>${movie.movieDuration}&nbsp;min</p>
+                    <p><span><strong>Rating:&nbsp;</strong>${movie.movieRating}&nbsp;<span style="color: gold"><i class="fa fa-star"></i></span></p>
                     <h4>${movie.moviePrice}&nbsp;$</h4>
 
             </div>

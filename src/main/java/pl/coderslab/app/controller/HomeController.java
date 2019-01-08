@@ -1,5 +1,6 @@
 package pl.coderslab.app.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private MovieDao movieDao = new MovieDao();
+    @Autowired
+    private MovieDao movieDao;
 
     @RequestMapping("/")
     public String home() {
@@ -22,7 +24,7 @@ public class HomeController {
 
     @RequestMapping("/movieList")
     public String getMovieList(Model model) {
-        List<Movie> movies = movieDao.getMovieList();
+        List<Movie> movies = movieDao.getAllMovies();
         model.addAttribute("movies", movies);
 
         return "movieList";
