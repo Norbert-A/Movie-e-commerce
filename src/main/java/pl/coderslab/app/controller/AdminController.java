@@ -11,6 +11,7 @@ import pl.coderslab.app.model.Movie;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -50,7 +51,7 @@ public class AdminController {
 
         MultipartFile movieImage = movie.getMovieImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/resources/images/");
-        path = Paths.get(rootDirectory + movie.getMovieTitle()+".jpg");
+        path = Paths.get(rootDirectory + movie.getMovieId()+".jpg");
 
         if (movieImage != null && !movieImage.isEmpty()) {
             try {
@@ -65,8 +66,20 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/movieInventory/deleteMovie/{movieId}")
-    public String deleteMovie(@PathVariable int movieId, Model model) throws IOException {
+    public String deleteMovie(@PathVariable int movieId, Model model, HttpServletRequest request) throws IOException {
         movieDao.deleteMovie(movieId);
+
+        String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
+        path = Paths.get(rootDirectory + movieId + ".jpg");
+
+        if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         return "redirect:/admin/movieInventory";
     }

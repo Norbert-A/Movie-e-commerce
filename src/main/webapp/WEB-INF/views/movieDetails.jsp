@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="<c:url value="/resources/images/${movie.movieTitle}.jpg"/>"
+                    <img src="<c:url value="/resources/images/${movie.movieId}.jpg"/>"
                              alt="image" style="width: 70%"/>
                 </div>
                 <div class="col-md-5">
