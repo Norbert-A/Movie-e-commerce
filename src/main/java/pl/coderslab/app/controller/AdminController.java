@@ -45,6 +45,45 @@ public class AdminController {
         return "addMovie";
     }
 
+    @GetMapping("/admin/movieInventory/updateMovie/{movieId}")
+    public String updateMovie(@PathVariable int movieId, Model model) {
+        Movie movie = movieDao.getMovieById(movieId);
+        model.addAttribute(movie);
+
+        return "updateMovie";
+    }
+
+    @PostMapping("/admin/movieInventory/updateMovie/{movieId}")
+    public String updateMoviePost(@PathVariable int movieId, @ModelAttribute("movie") Movie movie, HttpServletRequest request) {
+
+        String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
+        path = Paths.get(rootDirectory + movieId + ".jpg");
+
+        if (Files.exists(path)) {
+            try {
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        MultipartFile movieImage = movie.getMovieImage();
+
+        if (movieImage != null && !movieImage.isEmpty()) {
+            try {
+                movieImage.transferTo(new File(path.toString()));
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("Image update failed");
+            }
+        }
+
+        movieDao.updateMovie(movie);
+
+        return "redirect:/admin/movieInventory";
+    }
+
+
     @PostMapping("/admin/movieInventory/addMovie")
     public String addMoviePost(@ModelAttribute("movie") Movie movie, HttpServletRequest request) {
         movieDao.addMovie(movie);
