@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<footer class="container">
+<footer>
     <p class="float-right"><a href="#">Back to top</a></p>
     <p>&copy; 2017-2019 MovieLandia Company, Inc. </p>
 </footer>

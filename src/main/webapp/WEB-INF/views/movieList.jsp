@@ -46,7 +46,7 @@
                         </div>
                     </td>
                     <td>${movie.movieCategory}</td>
-                    <td>${movie.movieRating}&nbsp;<span style="color: gold"><i class="fa fa-star fa-border"></i></span></td>
+                    <td>${movie.movieRating}&nbsp;<span style="color: gold"><i class="fa fa-star"></i></span></td>
                     <td>${movie.moviePrice}&nbsp;$</td>
                     <td>&nbsp;&nbsp;&nbsp;<a href="<spring:url value="/movieList/movieDetails/${movie.movieId}"/>">
                         <i class="fa fa-info-circle"></i></a></td>

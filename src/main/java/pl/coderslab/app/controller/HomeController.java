@@ -22,6 +22,18 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping("/admin")
+    public String administration(){
+        return "admin";
+    }
+
+    @RequestMapping("/admin/movieInventory")
+    public String movieInventory(Model model){
+        List<Movie> movies = movieDao.getAllMovies();
+        model.addAttribute("movies", movies);
+        return "movieInventory";
+    }
+
     @RequestMapping("/movieList")
     public String getMovieList(Model model) {
         List<Movie> movies = movieDao.getAllMovies();
