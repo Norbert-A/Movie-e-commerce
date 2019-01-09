@@ -13,7 +13,7 @@
             <p class="lead">Fill in the Movie details</p>
         </div>
 
-        <form:form action="#" method="post" modelAttribute="movie">
+        <form:form method="post" modelAttribute="movie">
         <div class="form-group">
             <label for="title">Title</label>
             <form:input path="movieTitle" id="title" class="form-Control"/>

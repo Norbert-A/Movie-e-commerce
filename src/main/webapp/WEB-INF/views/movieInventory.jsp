@@ -22,7 +22,6 @@
             <tr style="background-color: #0c5460; color: #bee5eb">
                 <th></th>
                 <th>Title</th>
-                <th>Trailer</th>
                 <th>Category</th>
                 <th>Rating</th>
                 <th>Price</th>
@@ -33,20 +32,6 @@
                 <tr>
                     <td><img src="#" alt="image"/></td>
                     <td>${movie.movieTitle}</td>
-                    <td>&nbsp;&nbsp;<a href="#videoPopup" class="button more" id="video">
-                        <i class="fa fa-play-circle"></i></a>
-                        <div id="videoPopup" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
-                            <iframe width="853" height="480"
-                                    src="https://www.youtube.com/embed/${movie.movieTrailerId}"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                            </iframe>
-                            <script>
-                                $('#video').magnificPopup({})
-                            </script>
-                        </div>
-                    </td>
                     <td>${movie.movieCategory}</td>
                     <td>${movie.movieRating}&nbsp;<span style="color: gold"><i class="fa fa-star"></i></span></td>
                     <td>${movie.moviePrice}&nbsp;$</td>
