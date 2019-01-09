@@ -1,0 +1,21 @@
+form label{
+    font-weight: bold;
+}
+
+.table{
+    table-layout: fixed;
+    overflow: auto;
+
+}
+
+.table th{
+    text-align: center;
+}
+
+.table td{
+    text-align: center;
+    background: whitesmoke;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -1,9 +1,8 @@
 package pl.coderslab.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
 
 @Entity
 public class Movie {
@@ -12,6 +11,8 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int movieId;
     private String movieTitle;
+    @Transient
+    private MultipartFile movieImage;
     private String movieCategory;
     private String movieDescription;
     private int movieDuration;
@@ -21,6 +22,15 @@ public class Movie {
     private double moviePrice;
     private String movieStatus;
     private double movieRating;
+
+
+    public MultipartFile getMovieImage() {
+        return movieImage;
+    }
+
+    public void setMovieImage(MultipartFile movieImage) {
+        this.movieImage = movieImage;
+    }
 
     public String getMovieDirector() {
         return movieDirector;

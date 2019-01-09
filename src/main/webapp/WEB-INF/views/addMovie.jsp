@@ -13,7 +13,7 @@
             <p class="lead">Fill in the Movie details</p>
         </div>
 
-        <form:form method="post" modelAttribute="movie">
+        <form:form method="post" modelAttribute="movie" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Title</label>
             <form:input path="movieTitle" id="title" class="form-Control"/>
@@ -58,6 +58,11 @@
         <div class="form-group">
             <label for="price">Price</label>
             <form:input path="moviePrice" id="price" class="form-Control"/>
+        </div>
+
+        <div class="form-group">
+            <label class="control-box" for="Image">Upload Image</label>
+            <form:input path="movieImage" id="Image" type="file" class="form:input-medium"/>
         </div>
 
         <div class="form-group">

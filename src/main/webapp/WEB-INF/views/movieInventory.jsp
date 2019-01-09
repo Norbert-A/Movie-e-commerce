@@ -30,13 +30,18 @@
             </thead>
             <c:forEach items="${movies}" var="movie">
                 <tr>
-                    <td><img src="#" alt="image"/></td>
+                    <td><img src="<c:url value="/resources/images/${movie.movieTitle}.jpg"/>"
+                             alt="image" style="width: 50%"/></td>
                     <td>${movie.movieTitle}</td>
                     <td>${movie.movieCategory}</td>
                     <td>${movie.movieRating}&nbsp;<span style="color: gold"><i class="fa fa-star"></i></span></td>
                     <td>${movie.moviePrice}&nbsp;$</td>
-                    <td>&nbsp;&nbsp;&nbsp;<a href="<spring:url value="/movieList/movieDetails/${movie.movieId}"/>">
-                        <i class="fa fa-info-circle"></i></a></td>
+                    <td>
+                        <a href="<spring:url value="/movieList/movieDetails/${movie.movieId}"/>">
+                        <i class="fa fa-info-circle"></i></a>
+                        <a href="<spring:url value="/admin/movieInventory/deleteMovie/${movie.movieId}"/>">
+                        <i class="fa fa-trash"></i></a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

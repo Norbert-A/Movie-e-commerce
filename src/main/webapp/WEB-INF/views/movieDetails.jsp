@@ -16,7 +16,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="#" alt="image" style="width: 100%; height: 77%;"/>
+                    <img src="<c:url value="/resources/images/${movie.movieTitle}.jpg"/>"
+                             alt="image" style="width: 70%"/>
                 </div>
                 <div class="col-md-5">
                     <h3>${movie.movieTitle}</h3>
