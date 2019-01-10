@@ -13,7 +13,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 
 
     <style>
@@ -31,9 +30,9 @@
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/carousel.css"/>" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #1b1e21">
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark position-static-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">MovieLandia</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -62,7 +61,7 @@
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="height: 105%">
             <div class="carousel-item active">
                 <div>
                     <img src="<c:url value="/resources/images/aquaman.jpg" />" alt="bg1" style="width:100%">

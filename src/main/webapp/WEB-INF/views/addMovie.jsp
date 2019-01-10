@@ -15,7 +15,7 @@
 
         <form:form method="post" modelAttribute="movie" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Title</label> <form:errors path="movieTitle" cssStyle="color: red"/>
             <form:input path="movieTitle" id="title" class="form-Control"/>
         </div>
 
@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            <label for="price">Price</label>
+            <label for="price">Price</label> <form:errors path="moviePrice" cssStyle="color: red"/>
             <form:input path="moviePrice" id="price" class="form-Control"/>
         </div>
 

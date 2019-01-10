@@ -1,8 +1,11 @@
 package pl.coderslab.app.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Movie {
@@ -10,6 +13,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int movieId;
+    @NotEmpty
     private String movieTitle;
     @Transient
     private MultipartFile movieImage;
@@ -19,6 +23,8 @@ public class Movie {
     private String movieDirector;
     private String movieStars;
     private String movieTrailerId;
+    @Min(value = 0)
+    @NotEmpty
     private double moviePrice;
     private String movieStatus;
     private double movieRating;

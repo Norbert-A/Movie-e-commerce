@@ -3,12 +3,14 @@ package pl.coderslab.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.app.dao.MovieDao;
 import pl.coderslab.app.model.Movie;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -54,7 +56,12 @@ public class AdminController {
     }
 
     @PostMapping("/admin/movieInventory/updateMovie/{movieId}")
-    public String updateMoviePost(@PathVariable int movieId, @ModelAttribute("movie") Movie movie, HttpServletRequest request) {
+    public String updateMoviePost(@Valid @PathVariable int movieId, @ModelAttribute("movie") Movie movie, BindingResult result,
+                                  HttpServletRequest request) {
+
+        if(result.hasErrors()){
+            return "updateMovie";
+        }
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
         path = Paths.get(rootDirectory + movieId + ".jpg");
@@ -85,7 +92,12 @@ public class AdminController {
 
 
     @PostMapping("/admin/movieInventory/addMovie")
-    public String addMoviePost(@ModelAttribute("movie") Movie movie, HttpServletRequest request) {
+    public String addMoviePost(@Valid @ModelAttribute("movie") Movie movie, BindingResult result, HttpServletRequest request) {
+
+        if(result.hasErrors()){
+            return "addMovie";
+        }
+
         movieDao.addMovie(movie);
 
         MultipartFile movieImage = movie.getMovieImage();

@@ -18,7 +18,7 @@
             <form:hidden path="movieId" value="${movie.movieId}"/>
 
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Title</label> <form:errors path="movieTitle" cssStyle="color: red"/>
             <form:input path="movieTitle" id="title" class="form-Control" value="${movie.movieTitle}"/>
         </div>
 
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            <label for="price">Price</label>
+            <label for="price">Price</label><form:errors path="moviePrice" cssStyle="color: red"/>
             <form:input path="moviePrice" id="price" class="form-Control" value="${movie.moviePrice}"/>
         </div>
 
