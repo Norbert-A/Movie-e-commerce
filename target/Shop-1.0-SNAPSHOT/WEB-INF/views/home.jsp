@@ -13,20 +13,9 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
 
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
     <!-- Custom styles for this template -->
     <link href="<c:url value="/resources/css/carousel.css"/>" rel="stylesheet">
 </head>
@@ -69,8 +58,8 @@
 
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>Aquaman</h1>
-                        <p>Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world.</p>
+                        <h1 style="text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;">Aquaman</h1>
+                        <p style="text-shadow: 3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;">Arthur Curry learns that he is the heir to the underwater kingdom of Atlantis, and must step forward to lead his people and be a hero to the world.</p>
                     </div>
                 </div>
             </div>
@@ -80,8 +69,8 @@
                 </div>
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>Hobbit</h1>
-                        <p>A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.</p>
+                        <h1 style="text-shadow:2px 2px 2px black, 0 0 40px yellow, 0 0 10px darkblue;">Hobbit</h1>
+                        <p style="text-shadow: 2px 2px 2px black, 0 0 40px yellow, 0 0 10px darkblue;">A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.</p>
                     </div>
                 </div>
             </div>
@@ -91,8 +80,8 @@
                 </div>
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>Greatest Showman</h1>
-                        <p>Celebrates the birth of show business and tells of a visionary who rose from nothing to create a spectacle that became a worldwide sensation.</p>
+                        <h1 style="text-shadow:2px 2px 2px black, 0 0 40px yellow, 0 0 10px darkblue;">Greatest Showman</h1>
+                        <p style="text-shadow: 2px 2px 2px black, 0 0 40px yellow, 0 0 10px darkblue;">Celebrates the birth of show business and tells of a visionary who rose from nothing to create a spectacle that became a worldwide sensation.</p>
                     </div>
                 </div>
             </div>

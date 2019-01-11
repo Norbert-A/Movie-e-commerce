@@ -41,7 +41,24 @@
                     <p><strong>Director:&nbsp;</strong>${movie.movieDirector}</p>
                     <p><strong>Stars:&nbsp;</strong>${movie.movieStars}</p>
                     <p><strong>Duration:&nbsp;</strong>${movie.movieDuration}&nbsp;min</p>
-                    <p><span><strong>Rating:&nbsp;</strong>${movie.movieRating}&nbsp;<span style="color: gold"><i class="fa fa-star"></i></span></p>
+                    <p><span><strong>Rating:&nbsp;</strong>
+
+                        <span class="imdbRatingPlugin" data-user="ur26317997" data-title="${movie.movieRating}" data-style="p4"><a
+                                href="https://www.imdb.com/title/${movie.movieRating}/?ref_=plg_rt_1"><img
+                                src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/images/imdb_31x14.png" alt=" Aquaman(2018) on IMDb"/></a></span>
+                        <script>(function (d, s, id) {
+                            var js, stags = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) {
+                                return;
+                            }
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
+                            stags.parentNode.insertBefore(js, stags);
+                        })(document, "script", "imdb-rating-api");</script>
+                        </span>
+
+                    </p>
                     <h4>${movie.moviePrice}&nbsp;$</h4>
 
             </div>

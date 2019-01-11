@@ -65,7 +65,7 @@
 
         <div class="form-group">
             <label class="control-box" for="Image">Upload Image</label>
-            <form:input path="movieImage" id="Image" type="file" class="form:input-medium"/>
+            <form:input path="movieImage" id="Image" type="file" class="form:input-medium" value="${movie.movieImage}"/>
         </div>
 
         <div class="form-group">

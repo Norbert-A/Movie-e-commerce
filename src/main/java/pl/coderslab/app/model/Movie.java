@@ -23,10 +23,9 @@ public class Movie {
     private String movieStars;
     private String movieTrailerId;
     @Min(value = 0)
-    @NotEmpty
     private double moviePrice;
     private String movieStatus;
-    private double movieRating;
+    private String movieRating;
 
 
     public MultipartFile getMovieImage() {
@@ -117,11 +116,11 @@ public class Movie {
         this.movieStatus = movieStatus;
     }
 
-    public double getMovieRating() {
+    public String getMovieRating() {
         return movieRating;
     }
 
-    public void setMovieRating(double movieRating) {
+    public void setMovieRating(String movieRating) {
         this.movieRating = movieRating;
     }
 }
