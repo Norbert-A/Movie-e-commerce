@@ -12,7 +12,6 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int movieId;
-    @NotEmpty
     private String movieTitle;
     @Transient
     private MultipartFile movieImage;
