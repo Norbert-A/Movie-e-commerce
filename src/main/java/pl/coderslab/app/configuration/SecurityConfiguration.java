@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    @Value("SELECT email, password, active FROM users WHERE email = ?")
+    @Value("SELECT email, password, active FROM user WHERE email = ?")
     private String usersQuery;
 
 

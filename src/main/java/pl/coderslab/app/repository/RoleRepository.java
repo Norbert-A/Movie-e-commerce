@@ -6,6 +6,6 @@ import pl.coderslab.app.model.Role;
 
 @Repository("roleRepository")
 public interface RoleRepository extends JpaRepository<Role, Integer> {
-    Role findByRoleId(String roleId);
+    Role findByUserrole(String userrole);
 
 }

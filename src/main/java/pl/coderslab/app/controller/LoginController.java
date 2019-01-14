@@ -57,9 +57,8 @@ public class LoginController {
 
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+            model.addAttribute("emailMsg", "There is already a user registered with the email provided");
+
         }
         if (bindingResult.hasErrors()) {
             return "registration";
@@ -68,7 +67,7 @@ public class LoginController {
             model.addAttribute("success", "U have been registered successfully");
             model.addAttribute("user", new User());
         }
-        return "registration";
+        return "login";
     }
 
 }

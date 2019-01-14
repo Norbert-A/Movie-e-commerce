@@ -37,6 +37,8 @@ public class User implements Serializable {
     @JoinColumn(name="addressId")
     private Address address;
 
+
+
     @OneToOne
     @JoinColumn(name = "cartId")
     @JsonIgnore
@@ -48,6 +50,7 @@ public class User implements Serializable {
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
+
 
     public int getUserId() {
         return userId;
