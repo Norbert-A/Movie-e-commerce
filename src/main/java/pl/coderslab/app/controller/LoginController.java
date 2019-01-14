@@ -2,12 +2,15 @@ package pl.coderslab.app.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.coderslab.app.model.Address;
 import pl.coderslab.app.model.User;
 import pl.coderslab.app.service.UserService;
 
@@ -26,9 +29,24 @@ public class LoginController {
     }
 
 
+
+    @PostMapping("/login")
+    public String loginPost(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        model.addAttribute(user);
+
+        return "home";
+    }
+
+
     @RequestMapping("/registration")
     public String registrationGet(Model model){
         User user = new User();
+        Address address = new Address();
+        user.setAddress(address);
+
         model.addAttribute("user", user);
 
         return "registration";
@@ -52,4 +70,5 @@ public class LoginController {
         }
         return "registration";
     }
+
 }

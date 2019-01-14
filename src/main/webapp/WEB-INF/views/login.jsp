@@ -14,16 +14,16 @@
             <div class="card-header">
                 <h3>Sign In</h3>
                 <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-film"></i></span>
+                    <span><i class="fa fa-film"></i></span>
                 </div>
             </div>
             <div class="card-body">
-                <form action="/login">
+                <form action="/login" method="post">
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="username">
+                        <input type="text" class="form-control" placeholder="email">
 
                     </div>
                     <div class="input-group form-group">
@@ -38,6 +38,13 @@
                     </div>
                 </form>
             </div>
+                <div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account?<a href="/registration"><i class="fa fa-hand-o-right"></i> Sign Up</a>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

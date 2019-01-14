@@ -1,5 +1,5 @@
 body{
-    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background-image: url("http://localhost:8080/resources/images/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -12,7 +12,7 @@ body{
 }
 
 .card{
-    height: 370px;
+    height: 300px;
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
@@ -82,4 +82,5 @@ input:focus{
 
 .links a{
     margin-left: 4px;
+    color: darkorange;
 }

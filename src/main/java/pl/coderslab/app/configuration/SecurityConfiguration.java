@@ -23,10 +23,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-    @Value("${spring.queries.users-query}")
+    @Value("SELECT email, password, active FROM users WHERE email = ?")
     private String usersQuery;
 
-    @Value("${spring.queries.roles-query}")
+
+    @Value("SELECT email, userrole From role WHERE email = ?")
     private String rolesQuery;
 
     @Override
@@ -65,7 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/images/**", "/css/**", "/js/**")
+                .antMatchers("/resources/**", "/css/**", "/images/**", "/js/**")
                 .antMatchers("/webapp/**", "/WEB-INF/**", "/views/**");
     }
 
