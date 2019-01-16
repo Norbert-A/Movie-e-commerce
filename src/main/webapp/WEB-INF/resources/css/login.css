@@ -19,6 +19,7 @@ body{
     background-color: rgba(0,0,0,0.5) !important;
 }
 
+
 .social_icon span{
     font-size: 60px;
     margin-left: 10px;
@@ -34,6 +35,7 @@ body{
     color: white;
 }
 
+
 .social_icon{
     position: absolute;
     right: 20px;
@@ -41,6 +43,13 @@ body{
 }
 
 .input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+
+.input-group-prepend2 span{
     width: 50px;
     background-color: #FFC312;
     color: black;

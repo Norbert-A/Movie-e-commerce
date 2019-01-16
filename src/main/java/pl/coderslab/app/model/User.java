@@ -59,7 +59,6 @@ public class User implements Serializable {
         return serialVersionUID;
     }
 
-
     public int getUserId() {
         return id;
     }

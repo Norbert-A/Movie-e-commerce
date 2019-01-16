@@ -98,7 +98,7 @@
 
     <!-- FOOTER -->
     <footer class="container">
-        <p>&copy; 2017-2018 Company, Inc.</p>
+        <p>&copy; 2017-2019 Company, Inc.</p>
     </footer>
 </main>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
