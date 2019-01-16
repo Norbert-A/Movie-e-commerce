@@ -42,10 +42,20 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
-                    <li><a class="nav-link" href="<c:url value="/admin"/>">Admin</a></li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a class="nav-link" href="<c:url value="/logout"/>">Logout</a></li>
+                    <li class="nav-item">
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                        <c:if test="${pageContext.request.userPrincipal.name  == 'admin@admin.com'}">
+                    <li><a class="nav-link" href="<c:url value="/admin" />">Admin</a></li>
+                    </c:if>
+                    <li><a class="nav-link" href="<c:url value="/logout" />">Logout</a></li>
+                    </c:if>
+                    </li>
+                    <li  class="nav-item">
+                        <c:if test="${pageContext.request.userPrincipal.name  == null}">
+                    <li><a class="nav-link" href="<c:url value="/login" />">Login</a></li>
+                    <li><a class="nav-link" href="<c:url value="/registration" />">Register</a></li>
+                    </c:if>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -27,7 +27,6 @@
                             <form:input type="text" class="form-control" path="name" id="name"
                                         placeholder="Full Name"/>
                         </div>
-
                     </div>
                     <div class="form-group">
 

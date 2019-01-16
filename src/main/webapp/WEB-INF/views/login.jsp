@@ -22,7 +22,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" id="email" name="email" class="form-control" placeholder="email">
+                        <input type="text" id="email" name="email" value="${email}" class="form-control" placeholder="email">
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -39,6 +39,7 @@
                     <c:if test="${not empty error}">
                         <div class="error" style="font-weight:bold; color: #ff0000;">${error}</div>
                     </c:if>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
             </div>
             <div>
