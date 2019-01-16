@@ -23,31 +23,28 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="email">
-
+                        <input type="text" id="email" name="email" class="form-control" placeholder="email">
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="password">
                     </div>
-
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn float-right login_btn">
                     </div>
                 </form>
             </div>
-                <div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center links">
-                            Don't have an account?<a href="/registration"><i class="fa fa-hand-o-right"></i> Sign Up</a>
-                        </div>
+            <div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Don't have an account?<a href="/registration"><i class="fa fa-hand-o-right"></i> Sign Up</a>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
 </body>
-
 </html>

@@ -1,23 +1,37 @@
 package pl.coderslab.app.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Table(name="role")
 public class Role {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int roleId;
-    private String email;
-    private String userrole;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="role_id")
+    private int id;
 
+    @Column(name="role")
+    private String role;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

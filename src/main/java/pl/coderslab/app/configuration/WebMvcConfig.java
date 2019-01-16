@@ -21,6 +21,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return bCryptPasswordEncoder;
     }
 
+
     @Bean
     public InternalResourceViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

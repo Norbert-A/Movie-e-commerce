@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -17,7 +18,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
-    private int userId;
+    private int id;
 
     @NotEmpty
     private String name;
@@ -33,18 +34,25 @@ public class User implements Serializable {
 
     private boolean active;
 
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
+    private Set<Role> roles;
+
     @OneToOne
     @JoinColumn(name="addressId")
     private Address address;
-
-
 
     @OneToOne
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;
 
-    public void setRoles(HashSet<Role> roles) {
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public static long getSerialVersionUID() {
@@ -53,11 +61,11 @@ public class User implements Serializable {
 
 
     public int getUserId() {
-        return userId;
+        return id;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.id = userId;
     }
 
     public String getName() {

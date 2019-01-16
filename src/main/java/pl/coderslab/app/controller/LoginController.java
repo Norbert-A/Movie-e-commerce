@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.app.model.Address;
 import pl.coderslab.app.model.User;
 import pl.coderslab.app.service.UserService;
@@ -24,20 +25,17 @@ public class LoginController {
 
 
     @RequestMapping("/login")
-    public String login(){
+    public String login(@RequestParam(value="error", required = false) String error, @RequestParam(value="logout",
+            required = false) String logout, Model model) {
+        if (error!=null) {
+            model.addAttribute("error", "Invalid username and password");
+        }
+
+        if(logout!=null) {
+            model.addAttribute("msg", "You have been logged out successfully.");
+        }
+
         return "login";
-    }
-
-
-
-    @PostMapping("/login")
-    public String loginPost(Model model){
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
-        model.addAttribute(user);
-
-        return "home";
     }
 
 
