@@ -27,12 +27,9 @@ public class LoginController {
     @RequestMapping("/login")
     public String login(@RequestParam(value="error", required = false) String error, @RequestParam(value="logout",
             required = false) String logout, Model model) {
-        if (error!=null) {
-            model.addAttribute("error", "Invalid username and password");
-        }
 
-        if(logout!=null) {
-            model.addAttribute("msg", "You have been logged out successfully.");
+        if (error!=null) {
+            model.addAttribute("error", "Invalid Credentials!");
         }
 
         return "login";
@@ -62,8 +59,8 @@ public class LoginController {
             return "registration";
         } else {
             userService.saveUser(user);
-            model.addAttribute("success", "U have been registered successfully");
-            model.addAttribute("user", new User());
+//            model.addAttribute("success", "U have been registered successfully");
+//            model.addAttribute("user", new User()); // I'll maybe add js popup later
         }
         return "login";
     }

@@ -38,6 +38,9 @@
             <ul class="nav navbar-nav pull-right">
                 <li><a class="nav-link" href="<c:url value="/admin"/>">Admin</a></li>
             </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li><a class="nav-link" href="<c:url value="/logout"/>">Logout</a></li>
+            </ul>
         </div>
     </nav>
 </header>

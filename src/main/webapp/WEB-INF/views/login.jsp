@@ -30,9 +30,15 @@
                         </div>
                         <input type="password" id="password" name="password" class="form-control" placeholder="password">
                     </div>
+                    <div class="row align-items-center remember">
+                        <input type="checkbox" name="remember-me">Remember Me
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn float-right login_btn">
                     </div>
+                    <c:if test="${not empty error}">
+                        <div class="error" style="font-weight:bold; color: #ff0000;">${error}</div>
+                    </c:if>
                 </form>
             </div>
             <div>

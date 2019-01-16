@@ -29,7 +29,7 @@ public class User implements Serializable {
     private String phone;
 
     @NotEmpty
-    @Length(min = 5)
+    @Length(min = 5, message="Most be longer than 5")
     private String password;
 
     private boolean active;
@@ -38,11 +38,11 @@ public class User implements Serializable {
     @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
     private Set<Role> roles;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="addressId")
     private Address address;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;

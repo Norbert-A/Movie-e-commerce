@@ -58,7 +58,7 @@
                             <i class="fa fa-info-circle"></i></a>
 
                         <a href="<spring:url value="/admin/movieInventory/updateMovie/${movie.movieId}"/>">
-                            <i class="fa fa-pencil"></i></a>
+                            <i class="fa fa-pencil-square"></i></a>
 
                         <a href="<spring:url value="/admin/movieInventory/deleteMovie/${movie.movieId}"/>">
                             <i class="fa fa-trash"></i></a>

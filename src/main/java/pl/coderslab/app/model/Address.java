@@ -1,9 +1,6 @@
 package pl.coderslab.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -19,7 +16,7 @@ public class Address implements Serializable {
     private String city;
     private String country;
 
-    @OneToOne
+    @OneToOne(cascade= CascadeType.ALL)
     private User user;
 
     public static long getSerialVersionUID() {

@@ -14,7 +14,7 @@ public class CartItem implements Serializable {
     @GeneratedValue
     private int cartItemId;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "movieId")
     private Movie movie;
 
