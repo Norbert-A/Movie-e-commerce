@@ -1,5 +1,6 @@
 form label{
     font-weight: bold;
+
 }
 
 .table{
@@ -8,13 +9,20 @@ form label{
 
 }
 
+
+div {
+    color:white;
+}
+
 .table th{
     text-align: center;
+    background: rgba(0,0,0,0.5);
+    color: white;
 }
 
 .table td{
     text-align: center;
-    background: whitesmoke;
+    background: rgba(255,255,255,0.7);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
