@@ -1,10 +1,10 @@
-package pl.coderslab.app.dao;
+package pl.coderslab.app.service;
 
 import pl.coderslab.app.model.Movie;
 
 import java.util.List;
 
-public interface MovieDao {
+public interface MovieService {
 
     void addMovie(Movie movie);
 
@@ -15,5 +15,4 @@ public interface MovieDao {
     List<Movie> getAllMovies();
 
     Movie getMovieById(int movieId);
-
 }

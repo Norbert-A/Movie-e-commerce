@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.coderslab.app.dao.MovieDao;
 import pl.coderslab.app.model.Movie;
+import pl.coderslab.app.repository.MovieRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -24,7 +24,7 @@ public class AdminController {
     private Path path;
 
     @Autowired
-    private MovieDao movieDao;
+    private MovieRepository  movieRepository;
 
     @RequestMapping("/admin")
     public String administration() {
@@ -33,7 +33,7 @@ public class AdminController {
 
     @RequestMapping("/admin/movieInventory")
     public String movieInventory(Model model) {
-        List<Movie> movies = movieDao.getAllMovies();
+        List<Movie> movies = movieRepository.getAllMovies();
         model.addAttribute("movies", movies);
 
         return "movieInventory";
@@ -49,7 +49,7 @@ public class AdminController {
 
     @GetMapping("/admin/movieInventory/updateMovie/{movieId}")
     public String updateMovie(@PathVariable int movieId, Model model) {
-        Movie movie = movieDao.getMovieById(movieId);
+        Movie movie = movieRepository.getOne(movieId);
         model.addAttribute(movie);
 
         return "updateMovie";
@@ -85,7 +85,7 @@ public class AdminController {
             }
         }
 
-        movieDao.updateMovie(movie);
+        movieRepository.save(movie);
 
         return "redirect:/admin/movieInventory";
     }
@@ -98,7 +98,7 @@ public class AdminController {
             return "addMovie";
         }
 
-        movieDao.addMovie(movie);
+        movieRepository.save(movie);
 
         MultipartFile movieImage = movie.getMovieImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/resources/images/");
@@ -118,7 +118,7 @@ public class AdminController {
 
     @RequestMapping("/admin/movieInventory/deleteMovie/{movieId}")
     public String deleteMovie(@PathVariable int movieId, Model model, HttpServletRequest request) throws IOException {
-        movieDao.deleteMovie(movieId);
+        movieRepository.deleteById(movieId);
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
         path = Paths.get(rootDirectory + movieId + ".jpg");

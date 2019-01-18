@@ -18,7 +18,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int userId;
 
     @NotEmpty(message="Can't be empty")
     private String name;
@@ -60,11 +60,11 @@ public class User implements Serializable {
     }
 
     public int getUserId() {
-        return id;
+        return userId;
     }
 
     public void setUserId(int userId) {
-        this.id = userId;
+        this.userId = userId;
     }
 
     public String getName() {

@@ -18,9 +18,9 @@ public class CartItem implements Serializable {
     @JoinColumn(name = "movieId")
     private Movie movie;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cartId")
-    @JsonIgnore
     private Cart cart;
 
     private int quantity;

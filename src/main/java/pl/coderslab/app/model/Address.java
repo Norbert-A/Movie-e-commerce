@@ -11,7 +11,7 @@ public class Address implements Serializable {
 
     @Id
     @GeneratedValue
-    private int AddressId;
+    private int addressId;
     private String address;
     private String city;
     private String country;
@@ -24,11 +24,11 @@ public class Address implements Serializable {
     }
 
     public int getAddressId() {
-        return AddressId;
+        return addressId;
     }
 
     public void setAddressId(int addressId) {
-        AddressId = addressId;
+        this.addressId = addressId;
     }
 
     public String getAddress() {
