@@ -1,7 +1,7 @@
 <!-- FOOTER -->
 <footer>
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2019 MovieLandia Company, Inc. </p>
+    <p class="float-right"><a href="#" style="color: white">&nbsp;&nbsp;</a></p>
+    <p style="color: white">&copy; 2017-2019 MovieLandia Company, Inc. </p>
 </footer>
 
 </div>

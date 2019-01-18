@@ -2,5 +2,5 @@ body{
     background-image: url("http://localhost:8080/resources/images/night.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
+    width: 100%;
 }

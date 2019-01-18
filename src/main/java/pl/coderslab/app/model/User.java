@@ -20,15 +20,15 @@ public class User implements Serializable {
     @GeneratedValue
     private int id;
 
-    @NotEmpty
+    @NotEmpty(message="Can't be empty")
     private String name;
 
-    @NotEmpty
-    @Email
+    @NotEmpty(message="Can't be empty")
+    @Email(message="Must be email-format")
     private String email;
     private String phone;
 
-    @NotEmpty
+    @NotEmpty(message="Can't be empty")
     @Length(min = 5, message="Most be longer than 5")
     private String password;
 

@@ -52,7 +52,7 @@ public class LoginController {
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             model.addAttribute("emailMsg", "There is already a user registered with the email provided");
-
+            return "registration";
         }
         if (bindingResult.hasErrors()) {
             return "registration";

@@ -12,8 +12,9 @@
 
             <p class="lead">Make your changes</p>
         </div>
-
-        <form:form method="post" modelAttribute="movie" enctype="multipart/form-data">
+        <%-- I'm aware of the risks, its either this or changing the order, multipart before security, both have its cons --%>
+        <form:form action="/admin/movieInventory/updateMovie/${movie.movieId}?${_csrf.parameterName}=${_csrf.token}"
+                   method="post" modelAttribute="movie" enctype="multipart/form-data">
 
             <form:hidden path="movieId" value="${movie.movieId}"/>
 
@@ -24,7 +25,8 @@
 
         <div class="form-group">
             <label for="description">Description</label>
-            <form:textarea path="movieDescription" id="description" class="form-Control" value="${movie.movieDescription}"/>
+            <form:textarea path="movieDescription" id="description" class="form-Control"
+                           value="${movie.movieDescription}"/>
         </div>
 
         <div class="form-group">
@@ -76,7 +78,7 @@
                                                              value="inactive"/>Unavailable</label>
         </div>
 
-        <input type="submit" value="Submit" class="btn btn-success">
+        <input type="submit" value="Save" class="btn btn-success">
         <a href="<c:url value="/admin/movieInventory" />" class="btn btn-warning">Cancel</a>
         </form:form>
 

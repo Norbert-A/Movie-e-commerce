@@ -51,9 +51,9 @@
                 <li class="nav-item">
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <c:if test="${pageContext.request.userPrincipal.name  == 'admin@admin.com'}">
-                <li><a class="nav-link" style="color: yellow; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/admin" />">Admin</a></li>
+                <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/admin" />">Admin</a></li>
                 </c:if>
-                <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/logout" />">Logout</a></li>
+                <li><a class="nav-link" style="color: yellow; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/logout" />">Logout</a></li>
                 </c:if>
                 </li>
                 <li  class="nav-item">
@@ -77,7 +77,7 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner" style="height: 105%">
-            <div class="carousel-item">
+            <div class="carousel-item active">
                 <div>
                     <img src="<c:url value="/resources/images/aquaman.jpg" />" alt="bg1" style="width:100%">
                 </div>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item active">
+            <div class="carousel-item">
                 <div>
                     <img src="<c:url value="/resources/images/hobbit.jpg" />" alt="bg1" style="width:100%">
                 </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="carousel-item">
                 <div>
-                    <img src="<c:url value="/resources/images/greatestshowman.jpg" />" alt="bg1" style="height: 135%">
+                    <img src="<c:url value="/resources/images/greatestshowman.jpg" />" alt="bg1" style="width: 110%">
                 </div>
                 <div class="container">
                     <div class="carousel-caption text-left">

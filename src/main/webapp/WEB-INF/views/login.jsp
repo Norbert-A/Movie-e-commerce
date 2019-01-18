@@ -7,6 +7,7 @@
 <style>
     <%@include file="/WEB-INF/resources/css/login.css" %>
 </style>
+
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
@@ -51,6 +52,6 @@
             </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+
+
+<%@include file="/WEB-INF/views/patterns/footer.jsp" %>
