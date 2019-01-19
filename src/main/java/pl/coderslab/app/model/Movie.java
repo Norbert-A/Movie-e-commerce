@@ -1,9 +1,11 @@
 package pl.coderslab.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 public class Movie {
@@ -24,6 +26,10 @@ public class Movie {
     private double moviePrice;
     private String movieStatus;
     private String movieRating;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<CartItem> cartItemList;
 
 
     public MultipartFile getMovieImage() {

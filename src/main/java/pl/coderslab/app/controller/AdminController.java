@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.app.model.Movie;
 import pl.coderslab.app.repository.MovieRepository;
+import pl.coderslab.app.service.MovieService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -24,7 +25,7 @@ public class AdminController {
     private Path path;
 
     @Autowired
-    private MovieRepository  movieRepository;
+    private MovieService movieService;
 
     @RequestMapping("/admin")
     public String administration() {
@@ -33,23 +34,16 @@ public class AdminController {
 
     @RequestMapping("/admin/movieInventory")
     public String movieInventory(Model model) {
-        List<Movie> movies = movieRepository.getAllMovies();
+        List<Movie> movies = movieService.getAllMovies();
         model.addAttribute("movies", movies);
 
         return "movieInventory";
     }
 
-    @GetMapping("/admin/movieInventory/addMovie")
-    public String addMovie(Model model) {
-        Movie movie = new Movie();
-        model.addAttribute("movie", movie);
-
-        return "addMovie";
-    }
 
     @GetMapping("/admin/movieInventory/updateMovie/{movieId}")
     public String updateMovie(@PathVariable int movieId, Model model) {
-        Movie movie = movieRepository.getOne(movieId);
+        Movie movie = movieService.getMovieById(movieId);
         model.addAttribute(movie);
 
         return "updateMovie";
@@ -59,7 +53,7 @@ public class AdminController {
     public String updateMoviePost(@Valid @PathVariable int movieId, @ModelAttribute("movie") Movie movie, BindingResult result,
                                   HttpServletRequest request) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "updateMovie";
         }
 
@@ -85,24 +79,31 @@ public class AdminController {
             }
         }
 
-        movieRepository.save(movie);
+        movieService.updateMovie(movie);
 
         return "redirect:/admin/movieInventory";
     }
 
+    @GetMapping("/admin/movieInventory/addMovie")
+    public String addMovie(Model model) {
+        Movie movie = new Movie();
+        model.addAttribute("movie", movie);
+
+        return "addMovie";
+    }
 
     @PostMapping("/admin/movieInventory/addMovie")
     public String addMoviePost(@Valid @ModelAttribute("movie") Movie movie, BindingResult result, HttpServletRequest request) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "addMovie";
         }
 
-        movieRepository.save(movie);
+        movieService.addMovie(movie);
 
         MultipartFile movieImage = movie.getMovieImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/WEB-INF/resources/images/");
-        path = Paths.get(rootDirectory + movie.getMovieId()+".jpg");
+        path = Paths.get(rootDirectory + movie.getMovieId() + ".jpg");
 
         if (movieImage != null && !movieImage.isEmpty()) {
             try {
@@ -118,7 +119,7 @@ public class AdminController {
 
     @RequestMapping("/admin/movieInventory/deleteMovie/{movieId}")
     public String deleteMovie(@PathVariable int movieId, Model model, HttpServletRequest request) throws IOException {
-        movieRepository.deleteById(movieId);
+        movieService.deleteMovie(movieId);
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
         path = Paths.get(rootDirectory + movieId + ".jpg");
@@ -130,7 +131,6 @@ public class AdminController {
                 e.printStackTrace();
             }
         }
-
 
         return "redirect:/admin/movieInventory";
     }

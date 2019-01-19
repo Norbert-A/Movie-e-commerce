@@ -26,10 +26,6 @@ public class CartItem implements Serializable {
     private int quantity;
     private double totalPrice;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public int getCartItemId() {
         return cartItemId;
     }

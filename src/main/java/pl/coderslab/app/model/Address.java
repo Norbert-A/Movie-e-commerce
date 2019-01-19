@@ -16,11 +16,19 @@ public class Address implements Serializable {
     private String city;
     private String country;
 
+    @OneToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
+
     @OneToOne(cascade= CascadeType.ALL)
     private User user;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public int getAddressId() {

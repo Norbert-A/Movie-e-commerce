@@ -15,7 +15,7 @@ public class Cart implements Serializable {
     @GeneratedValue
     private int cartId;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "userId")
     @JsonIgnore
     private User user;
@@ -23,11 +23,19 @@ public class Cart implements Serializable {
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
-    private double grandTotal;
+    @OneToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Order getOrder() {
+        return order;
     }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    private double grandTotal;
 
     public int getCartId() {
         return cartId;
