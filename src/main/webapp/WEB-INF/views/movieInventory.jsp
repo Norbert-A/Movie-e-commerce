@@ -19,7 +19,7 @@
 
         <table class="table table-striped table-hover">
             <thead>
-            <tr style="background-color: #0c5460; color: #bee5eb">
+            <tr>
                 <th></th>
                 <th>Title</th>
                 <th>Category</th>

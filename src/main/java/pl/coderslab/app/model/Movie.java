@@ -31,7 +31,6 @@ public class Movie {
     @JsonIgnore
     private List<CartItem> cartItemList;
 
-
     public MultipartFile getMovieImage() {
         return movieImage;
     }
@@ -126,5 +125,13 @@ public class Movie {
 
     public void setMovieRating(String movieRating) {
         this.movieRating = movieRating;
+    }
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
     }
 }

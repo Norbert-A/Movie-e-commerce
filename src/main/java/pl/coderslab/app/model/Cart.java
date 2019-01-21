@@ -23,18 +23,6 @@ public class Cart implements Serializable {
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;
 
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     private double grandTotal;
 
     public int getCartId() {
@@ -68,4 +56,5 @@ public class Cart implements Serializable {
     public void setGrandTotal(double grandTotal) {
         this.grandTotal = grandTotal;
     }
+
 }

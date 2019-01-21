@@ -14,13 +14,13 @@ public class CartItem implements Serializable {
     @GeneratedValue
     private int cartItemId;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "movieId")
     private Movie movie;
 
-    @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "cartId")
+    @JsonIgnore
     private Cart cart;
 
     private int quantity;

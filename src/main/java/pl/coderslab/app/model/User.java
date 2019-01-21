@@ -47,18 +47,6 @@ public class User implements Serializable {
     @JsonIgnore
     private Cart cart;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "orderId")
-    private Order order;
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }

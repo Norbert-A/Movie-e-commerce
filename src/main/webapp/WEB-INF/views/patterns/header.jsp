@@ -53,17 +53,20 @@
                 <ul class="nav navbar-nav pull-right">
                     <li class="nav-item">
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <c:if test="${pageContext.request.userPrincipal.name  == 'admin@admin.com'}">
-                    <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/admin" />">Admin</a></li>
-                    </c:if>
-                    <li><a class="nav-link" style="color: yellow; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/logout" />">Logout</a></li>
-                    </c:if>
+                            <c:if test="${pageContext.request.userPrincipal.name  == 'admin@admin.com'}">
+                                <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/admin" />">Admin</a></li>
+                            </c:if>
+                            <c:if test="${pageContext.request.userPrincipal.name != 'admin@admin.com'}">
+                                <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/cart" />">Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                            </c:if>
+                            <li><a class="nav-link" style="color: yellow; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/logout" />">Logout</a></li>
+                        </c:if>
                     </li>
                     <li  class="nav-item">
                         <c:if test="${pageContext.request.userPrincipal.name  == null}">
-                    <li><a class="nav-link" style="color: yellow; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/login" />">Login</a></li>
-                    <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/registration" />">Register</a></li>
-                    </c:if>
+                            <li><a class="nav-link" style="color: yellow; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/login" />">Login</a></li>
+                            <li><a class="nav-link" style="color: orange; text-shadow:3px 3px 2px black, 0 0 40px yellow, 0 0 10px darkblue;" href="<c:url value="/registration" />">Register</a></li>
+                        </c:if>
                     </li>
                 </ul>
             </div>

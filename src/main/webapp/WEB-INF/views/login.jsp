@@ -40,7 +40,7 @@
                     <c:if test="${not empty error}">
                         <div class="error" style="font-weight:bold; color: #ff0000;">${error}</div>
                     </c:if>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />--%>
                 </form>
             </div>
             <div>

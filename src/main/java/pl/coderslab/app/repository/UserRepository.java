@@ -8,6 +8,6 @@ import pl.coderslab.app.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query(value = "SELECT * FROM user WHERE email = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE email = ?", nativeQuery = true)
     User findByEmail(String email);
 }
