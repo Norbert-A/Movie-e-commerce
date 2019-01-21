@@ -5,24 +5,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.app.model.Cart;
 import pl.coderslab.app.model.CartItem;
-import pl.coderslab.app.model.Order;
-import pl.coderslab.app.repository.OrderRepository;
+import pl.coderslab.app.model.UserOrder;
+import pl.coderslab.app.repository.UserOrderRepository;
 import pl.coderslab.app.service.CartService;
-import pl.coderslab.app.service.OrderService;
+import pl.coderslab.app.service.UserOrderService;
 
 import java.util.List;
 
 @Service
 @Transactional
-public class OrderServiceImpl implements OrderService {
+public class UserOrderServiceImpl implements UserOrderService {
 
     @Autowired
     private CartService cartService;
 
     @Autowired
-    private OrderRepository orderRepository;
+    private UserOrderRepository orderRepository;
 
-    public void addOrder(Order order) {
+    public void addOrder(UserOrder order) {
         orderRepository.save(order);
     }
 
@@ -32,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateOrder(Order order) {
+    public void updateOrder(UserOrder order) {
         orderRepository.save(order);
     }
 

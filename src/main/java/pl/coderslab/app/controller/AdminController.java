@@ -119,7 +119,6 @@ public class AdminController {
 
     @RequestMapping("/admin/movieInventory/deleteMovie/{movieId}")
     public String deleteMovie(@PathVariable int movieId, Model model, HttpServletRequest request) throws IOException {
-        movieService.deleteMovie(movieId);
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
         path = Paths.get(rootDirectory + movieId + ".jpg");
@@ -131,6 +130,8 @@ public class AdminController {
                 e.printStackTrace();
             }
         }
+
+        movieService.deleteMovie(movieId);
 
         return "redirect:/admin/movieInventory";
     }

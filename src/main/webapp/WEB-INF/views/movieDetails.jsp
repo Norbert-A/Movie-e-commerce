@@ -64,7 +64,7 @@
                         })(document, "script", "imdb-rating-api");</script>
                         </span>
                             </p>
-                            <h4>${movie.moviePrice}&nbsp;<strong>$</strong></h4
+                            <h4><i style="color: yellow" class="fa fa-usd" aria-hidden="true"></i>&nbsp;${movie.moviePrice}</h4
 
                             <p>
                                 <a href="<c:url value="/movieList" />" class="btn btn-light">Back</a>&nbsp;

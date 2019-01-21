@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.app.model.Cart;
 import pl.coderslab.app.model.CartItem;
 import pl.coderslab.app.model.Movie;
-import pl.coderslab.app.repository.CartItemRepository;
 import pl.coderslab.app.service.CartItemService;
 import pl.coderslab.app.service.CartService;
 import pl.coderslab.app.service.MovieService;
 import pl.coderslab.app.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -35,19 +33,23 @@ public class CartRestController {
     @Autowired
     private CartItemService cartItemService;
 
-    @Autowired
-    private CartItemRepository cartItemRepository;
-
     @RequestMapping("/{cartId}")
     public @ResponseBody
     Cart getCartById (@PathVariable int cartId) {
         return cartService.getCartById(cartId);
     }
 
-
-    @PutMapping(value = "/add/{movieId}")
+    @PutMapping("/remove/{movieId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void addItem (@PathVariable (value = "movieId") int movieId, @AuthenticationPrincipal User user) {
+    public void removeItem (@PathVariable int movieId) {
+        CartItem cartItem = cartItemService.getCartItemByMovieId(movieId);
+        cartItemService.deleteCartItemById(cartItem.getCartItemId());
+//        cartItemService.deleteCartItem(cartItem);
+    }
+
+    @PutMapping("/add/{movieId}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void addItem (@PathVariable int movieId, @AuthenticationPrincipal User user) {
 
         Cart cart = userService.findUserByEmail(user.getUsername()).getCart();
         Movie movie = movieService.getMovieById(movieId);
@@ -72,13 +74,6 @@ public class CartRestController {
         cartItem.setTotalPrice(movie.getMoviePrice());
         cartItem.setCart(cart);
         cartItemService.addCartItem(cartItem);
-    }
-
-    @PutMapping(value = "/remove/{movieId}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void removeItem (@PathVariable (value="movieId") int movieId) {
-        CartItem cartItem = cartItemService.getCartItemByMovieId(movieId);
-        cartItemService.deleteCartItem(cartItem);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

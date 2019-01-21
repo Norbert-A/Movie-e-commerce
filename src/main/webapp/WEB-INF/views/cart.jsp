@@ -51,7 +51,7 @@
                     <th></th>
                     <th></th>
                     <th>Grand Total</th>
-                    <th>{{calculateGrandTotal()}}</th>
+                    <th><i style="color: yellow" class="fa fa-usd" aria-hidden="true"></i>&nbsp;{{calculateGrandTotal()}}</th>
                     <th></th>
                 </tr>
             </table>

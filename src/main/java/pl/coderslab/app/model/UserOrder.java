@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Order implements Serializable {
+public class UserOrder implements Serializable {
 
     private static final long serialVersionUID = -7048586067553466696L;
 
@@ -23,6 +23,16 @@ public class Order implements Serializable {
     @OneToOne
     @JoinColumn(name = "addressId")
     private Address address;
+
+    private int nic;
+
+    public int getNic() {
+        return nic;
+    }
+
+    public void setNic(int nic) {
+        this.nic = nic;
+    }
 
     public int getOrderId() {
         return orderId;

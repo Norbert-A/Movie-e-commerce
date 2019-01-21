@@ -1,12 +1,11 @@
 package pl.coderslab.app.service.Impl;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.coderslab.app.model.Cart;
 import pl.coderslab.app.repository.CartRepository;
 import pl.coderslab.app.service.CartService;
-import pl.coderslab.app.service.OrderService;
+import pl.coderslab.app.service.UserOrderService;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
@@ -19,7 +18,7 @@ public class CartServiceImpl implements CartService {
     private CartRepository cartRepository;
 
     @Autowired
-    private OrderService orderService;
+    private UserOrderService orderService;
 
     @Override
     public Cart getCartById(int cartId) {

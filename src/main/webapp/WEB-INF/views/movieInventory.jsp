@@ -52,7 +52,7 @@
                     </td>
 
 
-                    <td>${movie.moviePrice}&nbsp;$</td>
+                    <td><i style="color: yellow" class="fa fa-usd" aria-hidden="true"></i>&nbsp;${movie.moviePrice}</td>
                     <td>
                         <a href="<spring:url value="/movieList/movieDetails/${movie.movieId}"/>">
                             <i class="fa fa-info-circle"></i></a>
