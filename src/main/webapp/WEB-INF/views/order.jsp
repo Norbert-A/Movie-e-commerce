@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<jsp:useBean id="date" class="java.util.Date" />
 
 <%@include file="/WEB-INF/views/patterns/header.jsp" %>
 
@@ -37,7 +39,7 @@
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                            <p>Order Date: <fmt:formatDate type="date" value="${now}"/></p>
+                            <p>Order Date: <fmt:formatDate value="${date}" /></p>
                         </div>
                     </div>
 

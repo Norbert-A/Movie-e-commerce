@@ -25,22 +25,4 @@ public class CartServiceImpl implements CartService {
         return cartRepository.findById(cartId);
     }
 
-    @Override
-    public Cart validateCart(int cartId) throws IOException {
-
-        Cart cart = getCartById(cartId);
-        if(cart == null||cart.getCartItems().size() == 0) {
-            throw new IOException(cartId+"");
-        }
-        updateCart(cart);
-        return cart;
-    }
-
-    @Override
-    public void updateCart(Cart cart) {
-        int cartId = cart.getCartId();
-        double grandTotal = orderService.getOrderGrandTotal(cartId);
-        cart.setGrandTotal(grandTotal);
-        cartRepository.save(cart);
-    }
 }

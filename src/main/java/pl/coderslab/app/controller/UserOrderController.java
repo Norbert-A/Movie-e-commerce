@@ -58,7 +58,7 @@ public class UserOrderController {
 
         cartItemService.deleteAllCartItems(cart);
 
-        return "home";
+        return "thankYou";
     }
 
 

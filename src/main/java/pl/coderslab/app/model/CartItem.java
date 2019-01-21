@@ -18,7 +18,7 @@ public class CartItem implements Serializable {
     @JoinColumn(name = "movieId")
     private Movie movie;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;

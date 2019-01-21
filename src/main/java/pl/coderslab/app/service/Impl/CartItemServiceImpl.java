@@ -8,6 +8,7 @@ import pl.coderslab.app.model.CartItem;
 import pl.coderslab.app.repository.CartItemRepository;
 import pl.coderslab.app.service.CartItemService;
 
+import javax.persistence.PreRemove;
 import java.util.List;
 
 @Service
@@ -32,10 +33,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public void deleteAllCartItems(Cart cart) {
         List<CartItem> cartItems = cart.getCartItems();
-
-        for (CartItem cartItem : cartItems) {
-            deleteCartItem(cartItem);
-        }
+        cartItemRepository.deleteAll(cartItems);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class Movie {
     private String movieStatus;
     private String movieRating;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<CartItem> cartItemList;
 

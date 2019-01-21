@@ -24,16 +24,6 @@ public class UserOrder implements Serializable {
     @JoinColumn(name = "addressId")
     private Address address;
 
-    private int nic;
-
-    public int getNic() {
-        return nic;
-    }
-
-    public void setNic(int nic) {
-        this.nic = nic;
-    }
-
     public int getOrderId() {
         return orderId;
     }
