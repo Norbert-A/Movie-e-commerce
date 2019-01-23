@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.app.model.Cart;
 import pl.coderslab.app.model.CartItem;
 import pl.coderslab.app.model.Movie;
-import pl.coderslab.app.service.CartItemService;
-import pl.coderslab.app.service.CartService;
-import pl.coderslab.app.service.MovieService;
-import pl.coderslab.app.service.UserService;
+import pl.coderslab.app.model.SavedItems;
+import pl.coderslab.app.repository.SavedItemsRepository;
+import pl.coderslab.app.service.*;
 
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequestMapping("/rest/cart")
 public class CartRestController {
 
@@ -33,9 +32,14 @@ public class CartRestController {
     @Autowired
     private CartItemService cartItemService;
 
+    @Autowired
+    private UserOrderService userOrderService;
+
+    @Autowired
+    private SavedItemsRepository savedItemsRepository;
+
     @RequestMapping("/{cartId}")
-    public @ResponseBody
-    Cart getCartById (@PathVariable int cartId) {
+    public Cart getCartById (@PathVariable int cartId) {
         return cartService.getCartById(cartId);
     }
 
@@ -45,6 +49,8 @@ public class CartRestController {
         CartItem cartItem = cartItemService.getCartItemByMovieId(movieId);
         cartItemService.deleteCartItemById(cartItem.getCartItemId());
 //        cartItemService.deleteCartItem(cartItem);
+        SavedItems savedItem = savedItemsRepository.getSavedItemByMovieId(movieId);
+        savedItemsRepository.delete(savedItem);
     }
 
     @PutMapping("/add/{movieId}")
@@ -54,6 +60,21 @@ public class CartRestController {
         Cart cart = userService.findUserByEmail(user.getUsername()).getCart();
         Movie movie = movieService.getMovieById(movieId);
         List<CartItem> cartItems = cart.getCartItems();
+
+        List<SavedItems> savedItems = cart.getSavedItems();
+
+        for (int i = 0; i <savedItems.size(); i++) {
+
+            if(movie.getMovieId() == savedItems.get(i).getMovie().getMovieId()){
+
+                SavedItems savedItem = savedItems.get(i);
+                savedItem.setQuantity(savedItem.getQuantity()+1);
+                savedItem.setTotalPrice(movie.getMoviePrice() * savedItem.getQuantity());
+                savedItem.setGrandTotal(userOrderService.getOrderGrandTotal(cart.getCartId()));
+                savedItemsRepository.save(savedItem);
+
+            }
+        }
 
         for (int i = 0; i <cartItems.size(); i++) {
 
@@ -67,6 +88,14 @@ public class CartRestController {
                 return;
             }
         }
+
+        SavedItems savedItem = new SavedItems();
+        savedItem.setMovie(movie);
+        savedItem.setQuantity(1);
+        savedItem.setTotalPrice(movie.getMoviePrice());
+        savedItem.setCart(cart);
+        savedItem.setGrandTotal(userOrderService.getOrderGrandTotal(cart.getCartId()));
+        savedItemsRepository.save(savedItem);
 
         CartItem cartItem = new CartItem();
         cartItem.setMovie(movie);

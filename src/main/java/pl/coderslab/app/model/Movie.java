@@ -33,6 +33,18 @@ public class Movie {
     @JsonIgnore
     private List<CartItem> cartItemList;
 
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<SavedItems> savedItemsList;
+
+    public List<SavedItems> getSavedItemsList() {
+        return savedItemsList;
+    }
+
+    public void setSavedItemsList(List<SavedItems> savedItemsList) {
+        this.savedItemsList = savedItemsList;
+    }
+
     public MultipartFile getMovieImage() {
         return movieImage;
     }

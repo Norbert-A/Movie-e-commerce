@@ -16,4 +16,6 @@ public interface UserOrderService {
 
     List<UserOrder> getAllOrders();
 
+    UserOrder getOrderById (int orderId);
+
 }

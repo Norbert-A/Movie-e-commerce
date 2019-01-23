@@ -39,7 +39,7 @@
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                            <p>Order Date: <fmt:formatDate value="${orderDate}" /></p>
+                            <p>Order Date: <fmt:formatDate value="${dateNow}" /></p>
                         </div>
                     </div>
 
@@ -79,7 +79,7 @@
                     <p>
                         <a href="<c:url value="/cart" />" class="btn btn-light">Back to Cart&nbsp;<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>&nbsp;
 
-                        <a href="<spring:url value="/order/confirm/${cartId}${orderDate}" />"
+                        <a href="<spring:url value="/order/confirm/${cartId}" />"
                            class="btn btn-warning pull-right"></span>Confirm&nbsp;<i class="fa fa-check" aria-hidden="true"></i></a>
                     </p>
                 </form:form>

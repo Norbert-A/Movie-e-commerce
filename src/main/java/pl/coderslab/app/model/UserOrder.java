@@ -1,7 +1,10 @@
 package pl.coderslab.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class UserOrder implements Serializable {
@@ -12,25 +15,27 @@ public class UserOrder implements Serializable {
     @GeneratedValue
     private int orderId;
 
-    private String orderDate;
+    private Date orderDate;
 
     @OneToOne
     @JoinColumn(name = "cartId")
     private Cart cart;
 
     @OneToOne
-    @JoinColumn(name = "userId")
-    private User user;
-
-    @OneToOne
     @JoinColumn(name = "addressId")
     private Address address;
 
-    public String getOrderDate() {
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    @JsonIgnore
+    private User user;
+
+
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 

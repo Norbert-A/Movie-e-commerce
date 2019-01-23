@@ -53,4 +53,9 @@ public class UserOrderServiceImpl implements UserOrderService {
     public List<UserOrder> getAllOrders() {
         return orderRepository.findAll();
     }
+
+    @Override
+    public UserOrder getOrderById(int orderId) {
+        return orderRepository.findOrderByOrderId(orderId);
+    }
 }

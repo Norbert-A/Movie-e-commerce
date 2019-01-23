@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -42,25 +43,26 @@ public class User implements Serializable {
     @JoinColumn(name="addressId")
     private Address address;
 
-    @OneToOne
-    @JoinColumn(name = "orderId")
-    private UserOrder userOrder;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;
 
-    public UserOrder getUserOrder() {
-        return userOrder;
-    }
-
-    public void setUserOrder(UserOrder userOrder) {
-        this.userOrder = userOrder;
-    }
 
     public Set<Role> getRoles() {
         return roles;
+    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserOrder> userOrders;
+
+
+
+    public List<UserOrder> getUserOrders() {
+        return userOrders;
+    }
+
+    public void setUserOrders(List<UserOrder> userOrders) {
+        this.userOrders = userOrders;
     }
 
     public void setRoles(Set<Role> roles) {

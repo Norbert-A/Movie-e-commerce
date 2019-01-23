@@ -6,13 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.coderslab.app.model.Movie;
-import pl.coderslab.app.model.User;
-import pl.coderslab.app.model.UserOrder;
+import pl.coderslab.app.model.*;
 import pl.coderslab.app.repository.MovieRepository;
-import pl.coderslab.app.service.MovieService;
-import pl.coderslab.app.service.UserOrderService;
-import pl.coderslab.app.service.UserService;
+import pl.coderslab.app.repository.SavedItemsRepository;
+import pl.coderslab.app.service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -35,7 +32,13 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
+    private CartService cartService;
+
+    @Autowired
     private UserOrderService userOrderService;
+
+    @Autowired
+    SavedItemsRepository savedItemsRepository;
 
 
     @RequestMapping("/admin")
@@ -157,7 +160,8 @@ public class AdminController {
 
     @RequestMapping("/admin/users/deleteUser/{userId}")
     public String deleteMovie(@PathVariable int userId, Model model) {
-        if(userService.findUser(userId).getUserOrder() != null) {
+        List<UserOrder> orders = userService.findUser(userId).getUserOrders();
+        if(orders.size() > 0) {
             model.addAttribute("error", "Active User Order!");
             List<User> users = userService.getAllUsers();
             model.addAttribute("users", users);
@@ -165,7 +169,7 @@ public class AdminController {
         }
         userService.deleteUser(userId);
 
-        return "redirect:/admin/users?";
+        return "redirect:/admin/users";
     }
 
     @RequestMapping("/admin/orders")
@@ -174,5 +178,28 @@ public class AdminController {
         model.addAttribute("orders", orders);
 
         return "adminOrders";
+    }
+
+    @RequestMapping("/admin/orders/details/{orderId}")
+    public String orderDetails(@PathVariable int orderId, Model model){
+        UserOrder order = userOrderService.getOrderById(orderId);
+        model.addAttribute("order", order);
+
+        return "orderDetails";
+    }
+
+    @RequestMapping("/admin/orders/removeOrder/{orderId}/{cartId}")
+    public String deleteOrder(@PathVariable int orderId, @PathVariable int cartId) {
+
+        userOrderService.deleteOrder(orderId);
+
+        Cart cart = cartService.getCartById(cartId);
+
+        List<SavedItems> savedItems = cart.getSavedItems();
+        savedItemsRepository.deleteAll(savedItems);
+
+
+
+        return "redirect:/admin/orders";
     }
 }

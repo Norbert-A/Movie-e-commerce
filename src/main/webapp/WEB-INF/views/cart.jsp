@@ -17,7 +17,7 @@
             </div>
 
 
-            <a href="<spring:url value="/movieList" />" class="btn btn-primary">Add More</a>
+            <a href="<spring:url value="/movieList" />" class="btn btn-primary">Add Movie</a>
 
             <a href="<spring:url value="/order/${cartId}"/>" class="btn btn-success pull-right">Check out</a>
 

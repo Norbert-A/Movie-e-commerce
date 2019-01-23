@@ -23,7 +23,18 @@ public class Cart implements Serializable {
     @OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE)
     private List<CartItem> cartItems;
 
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE)
+    private List<SavedItems> savedItems;
+
     private double grandTotal;
+
+    public List<SavedItems> getSavedItems() {
+        return savedItems;
+    }
+
+    public void setSavedItems(List<SavedItems> savedItems) {
+        this.savedItems = savedItems;
+    }
 
     public int getCartId() {
         return cartId;
