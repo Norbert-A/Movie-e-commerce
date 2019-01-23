@@ -43,15 +43,17 @@ public class UserOrderController {
         return "order";
     }
 
-    @RequestMapping("/order/confirm/{cartId}")
-    public String confirmOrder(@PathVariable int cartId) {
+    @RequestMapping("/order/confirm/{cartId}{orderDate}")
+    public String confirmOrder(@PathVariable int cartId, String orderDate) {
 
         UserOrder order = new UserOrder();
+        order.setOrderDate(orderDate);
         Cart cart = cartService.getCartById(cartId);
         cart.setGrandTotal(userOrderService.getOrderGrandTotal(cartId));
         order.setCart(cart);
 
         User user = cart.getUser();
+        user.setUserOrder(order);
         order.setUser(user);
         order.setAddress(user.getAddress());
         userOrderService.addOrder(order);

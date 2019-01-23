@@ -15,6 +15,10 @@
         </div>
 
         <h4><a href="<c:url value="/admin/movieInventory"/>"class="btn btn-primary">Movie Inventory</a></h4>
+        &nbsp;&nbsp;
+        <h4><a href="<c:url value="/admin/users"/>"class="btn btn-warning">Users</a></h4>
+        &nbsp;&nbsp;
+        <h4><a href="<c:url value="/admin/orders"/>"class="btn btn-success">Orders</a></h4>
 
 
         <%@include file="/WEB-INF/views/patterns/footer.jsp" %>

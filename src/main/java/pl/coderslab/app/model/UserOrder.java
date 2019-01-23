@@ -12,6 +12,8 @@ public class UserOrder implements Serializable {
     @GeneratedValue
     private int orderId;
 
+    private String orderDate;
+
     @OneToOne
     @JoinColumn(name = "cartId")
     private Cart cart;
@@ -23,6 +25,14 @@ public class UserOrder implements Serializable {
     @OneToOne
     @JoinColumn(name = "addressId")
     private Address address;
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
 
     public int getOrderId() {
         return orderId;

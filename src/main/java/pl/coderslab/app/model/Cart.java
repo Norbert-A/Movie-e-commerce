@@ -20,7 +20,7 @@ public class Cart implements Serializable {
     @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "cart")
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.REMOVE)
     private List<CartItem> cartItems;
 
     private double grandTotal;

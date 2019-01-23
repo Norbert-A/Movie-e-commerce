@@ -2,6 +2,8 @@ package pl.coderslab.app.service;
 
 import pl.coderslab.app.model.UserOrder;
 
+import java.util.List;
+
 public interface UserOrderService {
 
     void addOrder(UserOrder order);
@@ -12,5 +14,6 @@ public interface UserOrderService {
 
     double getOrderGrandTotal(int cartId);
 
+    List<UserOrder> getAllOrders();
 
 }

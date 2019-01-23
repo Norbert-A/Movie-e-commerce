@@ -16,7 +16,7 @@ public class Address implements Serializable {
     private String city;
     private String country;
 
-    @OneToOne(cascade= CascadeType.ALL)
+    @OneToOne
     private User user;
 
     public int getAddressId() {

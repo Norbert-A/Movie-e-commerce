@@ -42,10 +42,22 @@ public class User implements Serializable {
     @JoinColumn(name="addressId")
     private Address address;
 
+    @OneToOne
+    @JoinColumn(name = "orderId")
+    private UserOrder userOrder;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;
+
+    public UserOrder getUserOrder() {
+        return userOrder;
+    }
+
+    public void setUserOrder(UserOrder userOrder) {
+        this.userOrder = userOrder;
+    }
 
     public Set<Role> getRoles() {
         return roles;

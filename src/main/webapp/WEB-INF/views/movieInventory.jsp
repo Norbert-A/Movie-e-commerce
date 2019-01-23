@@ -5,6 +5,22 @@
 
 <%@include file="/WEB-INF/views/patterns/header.jsp" %>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>$(document).ready(function() {
+    $.noConflict();
+    $('#table').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+    } );
+} );</script>
+
+
 
 <div class="container-wrapper">
     <div class="container">
@@ -17,7 +33,7 @@
 
         <a href="<spring:url value="/admin/movieInventory/addMovie"/>"class="btn btn-primary">Add Movie</a>
 
-        <table class="table table-striped table-hover">
+        <table id="table" class="table table-striped table-hover">
             <thead>
             <tr>
                 <th></th>

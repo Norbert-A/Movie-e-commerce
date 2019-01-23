@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int movieId;
+    @NotEmpty(message = "Must have a title")
     private String movieTitle;
     @Transient
     private MultipartFile movieImage;
@@ -22,7 +24,7 @@ public class Movie {
     private String movieDirector;
     private String movieStars;
     private String movieTrailerId;
-    @Min(value = 0)
+    @Min(value = 1, message = "Must have a price")
     private double moviePrice;
     private String movieStatus;
     private String movieRating;

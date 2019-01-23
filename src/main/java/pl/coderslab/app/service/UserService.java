@@ -12,6 +12,8 @@ public interface UserService {
 
     void deleteUser(int userId);
 
+    User findUser(int userId);
+
     List<User> getAllUsers();
 
     User findUserByEmail(String email);

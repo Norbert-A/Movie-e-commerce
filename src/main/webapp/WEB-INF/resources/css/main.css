@@ -8,6 +8,11 @@ form label{
     overflow: auto;
 
 }
+label {
+    display: block;
+    float: right;
+    width: 40%;
+}
 
 
 div {

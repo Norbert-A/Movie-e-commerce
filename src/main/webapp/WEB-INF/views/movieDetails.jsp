@@ -67,11 +67,14 @@
                             <h4><i style="color: yellow" class="fa fa-usd" aria-hidden="true"></i>&nbsp;${movie.moviePrice}</h4
 
                             <p>
+                                <c:if test="${pageContext.request.userPrincipal.name != null}">
                                 <a href="<c:url value="/movieList" />" class="btn btn-light">Back</a>&nbsp;
                                 <a href="#" class="btn btn-warning"
                                    ng-click="addToCart(${movie.movieId})">Add to <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>&nbsp;
                                 <a href="<spring:url value="/cart" />"
-                                   class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span>View <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                   class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span>
+                                    View <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                </c:if>
                             </p>
                         </div>
                     </div>

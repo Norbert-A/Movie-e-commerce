@@ -7,8 +7,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pl.coderslab.app.model.Movie;
+import pl.coderslab.app.model.User;
+import pl.coderslab.app.model.UserOrder;
 import pl.coderslab.app.repository.MovieRepository;
 import pl.coderslab.app.service.MovieService;
+import pl.coderslab.app.service.UserOrderService;
+import pl.coderslab.app.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -26,6 +30,13 @@ public class AdminController {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserOrderService userOrderService;
+
 
     @RequestMapping("/admin")
     public String administration() {
@@ -118,7 +129,7 @@ public class AdminController {
     }
 
     @RequestMapping("/admin/movieInventory/deleteMovie/{movieId}")
-    public String deleteMovie(@PathVariable int movieId, Model model, HttpServletRequest request) throws IOException {
+    public String deleteMovie(@PathVariable int movieId, HttpServletRequest request) throws IOException {
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("WEB-INF/resources/images/");
         path = Paths.get(rootDirectory + movieId + ".jpg");
@@ -134,5 +145,34 @@ public class AdminController {
         movieService.deleteMovie(movieId);
 
         return "redirect:/admin/movieInventory";
+    }
+
+    @RequestMapping("/admin/users")
+    public String users(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+
+        return "users";
+    }
+
+    @RequestMapping("/admin/users/deleteUser/{userId}")
+    public String deleteMovie(@PathVariable int userId, Model model) {
+        if(userService.findUser(userId).getUserOrder() != null) {
+            model.addAttribute("error", "Active User Order!");
+            List<User> users = userService.getAllUsers();
+            model.addAttribute("users", users);
+            return "users";
+        }
+        userService.deleteUser(userId);
+
+        return "redirect:/admin/users?";
+    }
+
+    @RequestMapping("/admin/orders")
+    public String adminOrders(Model model) {
+        List<UserOrder> orders = userOrderService.getAllOrders();
+        model.addAttribute("orders", orders);
+
+        return "adminOrders";
     }
 }

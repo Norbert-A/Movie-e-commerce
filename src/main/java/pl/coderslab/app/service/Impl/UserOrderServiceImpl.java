@@ -48,4 +48,9 @@ public class UserOrderServiceImpl implements UserOrderService {
 
         return grandTotal;
     }
+
+    @Override
+    public List<UserOrder> getAllOrders() {
+        return orderRepository.findAll();
+    }
 }
