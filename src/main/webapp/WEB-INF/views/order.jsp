@@ -39,7 +39,7 @@
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                            <p>Order Date: <fmt:formatDate value="${dateNow}" /></p>
+                            <p>Order Date: ${order.orderDate}</p>
                         </div>
                     </div>
 

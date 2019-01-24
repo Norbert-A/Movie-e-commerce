@@ -37,7 +37,7 @@
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                            <p>Order Date:&nbsp;${order.orderDate}</p>
+                            <p>Order Date: ${order.orderDate}</p>
                         </div>
                     </div>
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.app.model.Address;
 import pl.coderslab.app.model.User;
+import pl.coderslab.app.service.Impl.NotificationService;
 import pl.coderslab.app.service.UserService;
 
 import javax.validation.Valid;
@@ -18,6 +19,9 @@ public class RegistrationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @RequestMapping("/registration")
     public String registrationGet(Model model){
@@ -42,8 +46,8 @@ public class RegistrationController {
             return "registration";
         } else {
             userService.addUser(user);
-//            model.addAttribute("success", "U have been registered successfully");
-//            model.addAttribute("user", new User()); // I'll maybe add js popup later
+            notificationService.sendRegistrationNotification(user);
+
         }
         return "login";
     }

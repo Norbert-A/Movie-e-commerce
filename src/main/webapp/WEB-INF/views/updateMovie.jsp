@@ -4,6 +4,14 @@
 
 <%@include file="/WEB-INF/views/patterns/header.jsp" %>
 
+<style>
+
+    label {
+        float: left;
+    }
+
+</style>
+
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">

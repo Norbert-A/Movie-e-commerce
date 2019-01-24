@@ -46,6 +46,8 @@ public class UserOrderController {
         Cart cart = cartService.getCartById(cartId);
         cart.setGrandTotal(userOrderService.getOrderGrandTotal(cartId));
         order.setCart(cart);
+        Date dateNow = new Date();
+        order.setOrderDate(dateNow);
 
         User user = cart.getUser();
         order.setUser(user);
