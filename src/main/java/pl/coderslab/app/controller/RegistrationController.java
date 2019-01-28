@@ -45,8 +45,10 @@ public class RegistrationController {
         if (bindingResult.hasErrors()) {
             return "registration";
         } else {
+
+//            notificationService.sendRegistrationNotification(user);
             userService.addUser(user);
-            notificationService.sendRegistrationNotification(user);
+
 
         }
         return "login";

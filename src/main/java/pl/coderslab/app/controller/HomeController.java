@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.app.model.Movie;
 import pl.coderslab.app.repository.MovieRepository;
+import pl.coderslab.app.service.MovieService;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    private MovieRepository movieRepository;
+    private MovieService movieService;
 
     @RequestMapping("/")
     public String home() {
@@ -24,7 +25,7 @@ public class HomeController {
 
     @RequestMapping("/movieList")
     public String getMovieList(Model model) {
-        List<Movie> movies = movieRepository.getAllMovies();
+        List<Movie> movies = movieService.getAllMovies();
         model.addAttribute("movies", movies);
 
         return "movieList";
@@ -32,7 +33,7 @@ public class HomeController {
 
     @RequestMapping("/movieList/movieDetails/{movieId}")
     public String getMovieDetails(@PathVariable int movieId, Model model) throws IOException {
-        Movie movie = movieRepository.getOne(movieId);
+        Movie movie = movieService.getMovieById(movieId);
         model.addAttribute(movie);
         return "movieDetails";
     }

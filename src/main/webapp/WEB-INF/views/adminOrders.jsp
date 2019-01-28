@@ -45,7 +45,7 @@
                     <td>${order.user.name}</td>
                     <td>${order.orderDate}</td>
                     <td>
-                        <a href="<spring:url value="/admin/orders/details/${order.orderId}"/>">
+                        <a href="<spring:url value="/admin/orders/details/${order.orderId}/${items.sa}"/>">
                             <i class="fa fa-info-circle"></i></a>
                     </td>
                 </tr>

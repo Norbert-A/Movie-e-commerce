@@ -8,6 +8,7 @@
 
     label {
         float: left;
+        width: 100%;
     }
 
 </style>
@@ -81,9 +82,9 @@
         <div class="form-group">
             <label for="status">Status:&nbsp;</label>
             <label class="checkbox-inline"><form:radiobutton path="movieStatus" id="status"
-                                                             value="active"/>Available&nbsp;</label>
+                                                             value="true"/>Available&nbsp;</label>
             <label class="checkbox-inline"><form:radiobutton path="movieStatus" id="status"
-                                                             value="inactive"/>Unavailable</label>
+                                                             value="false"/>Unavailable</label>
         </div>
 
         <input type="submit" value="Save" class="btn btn-success">

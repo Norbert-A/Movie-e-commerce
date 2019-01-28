@@ -15,4 +15,6 @@ public interface MovieService {
     List<Movie> getAllMovies();
 
     Movie getMovieById(int movieId);
+
+    List<Movie> getAllMoviesAdmin();
 }

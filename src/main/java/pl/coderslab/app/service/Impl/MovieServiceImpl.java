@@ -40,4 +40,9 @@ public class MovieServiceImpl implements MovieService {
     public Movie getMovieById(int movieId) {
         return movieRepository.getOne(movieId);
     }
+
+    @Override
+    public List<Movie> getAllMoviesAdmin() {
+        return movieRepository.getAllMoviesAdmin();
+    }
 }

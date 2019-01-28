@@ -48,7 +48,7 @@ public class AdminController {
 
     @RequestMapping("/admin/movieInventory")
     public String movieInventory(Model model) {
-        List<Movie> movies = movieService.getAllMovies();
+        List<Movie> movies = movieService.getAllMoviesAdmin();
         model.addAttribute("movies", movies);
 
         return "movieInventory";

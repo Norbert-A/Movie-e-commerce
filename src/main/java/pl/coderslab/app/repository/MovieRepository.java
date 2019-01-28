@@ -9,6 +9,9 @@ import java.util.List;
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     @Query(value ="SELECT * FROM movie", nativeQuery = true)
+    List<Movie> getAllMoviesAdmin();
+
+    @Query(value ="SELECT * FROM movie where movie_status = true", nativeQuery = true)
     List<Movie> getAllMovies();
 
 

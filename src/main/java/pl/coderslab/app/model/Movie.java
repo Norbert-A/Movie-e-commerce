@@ -26,7 +26,7 @@ public class Movie {
     private String movieTrailerId;
     @Min(value = 1, message = "Must have a price")
     private double moviePrice;
-    private String movieStatus;
+    private boolean movieStatus;
     private String movieRating;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
@@ -125,11 +125,11 @@ public class Movie {
         this.movieDescription = movieDescription;
     }
 
-    public String getMovieStatus() {
+    public boolean isMovieStatus() {
         return movieStatus;
     }
 
-    public void setMovieStatus(String movieStatus) {
+    public void setMovieStatus(boolean movieStatus) {
         this.movieStatus = movieStatus;
     }
 
