@@ -42,6 +42,8 @@
                     <td>
                         <a href="#" ng-click="removeFromCart(item.movie.movieId)"> <i class="fa fa-trash"></i></a>
                         &nbsp;
+                        <a href="#" ng-click="removeOneFromCart(item.movie.movieId)"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                        &nbsp;
                         <a href="#" ng-click="addToCart(item.movie.movieId)"><i class="fa fa-plus" aria-hidden="true"></i></a>
                     </td>
 

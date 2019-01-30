@@ -15,6 +15,12 @@ cartApp.controller('cartController', function ($scope, $http){
         });
     };
 
+    $scope.removeOneFromCart = function (movieId) {
+        $http.put('/rest/cart/removeOne/' + movieId).success(function (data) {
+            $scope.updateCart();
+        });
+    };
+
     $scope.initCartId = function (cartId) {
         $scope.cartId = cartId;
         $scope.updateCart(cartId);

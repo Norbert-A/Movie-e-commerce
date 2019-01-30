@@ -40,6 +40,43 @@ public class CartRestController {
         return cartService.getCartById(cartId);
     }
 
+    @PutMapping("/removeOne/{movieId}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void removeOneItem (@PathVariable int movieId, @AuthenticationPrincipal User user) {
+
+        Cart cart = userService.findUserByEmail(user.getUsername()).getCart();
+        Movie movie = movieService.getMovieById(movieId);
+        List<CartItem> cartItems = cart.getCartItems();
+
+        List<SavedItems> savedItems = cart.getSavedItems();
+
+        for (int i = 0; i <savedItems.size(); i++) {
+
+            if(movie.getMovieId() == savedItems.get(i).getMovie().getMovieId()){
+
+                SavedItems savedItem = savedItems.get(i);
+                savedItem.setQuantity(savedItem.getQuantity()-1);
+                savedItem.setTotalPrice(movie.getMoviePrice() * savedItem.getQuantity());
+                savedItem.setGrandTotal(userOrderService.getOrderGrandTotal(cart.getCartId()));
+                savedItemsRepository.save(savedItem);
+
+            }
+        }
+
+        for (int i = 0; i <cartItems.size(); i++) {
+
+            if(movie.getMovieId() == cartItems.get(i).getMovie().getMovieId()){
+
+                CartItem cartItem = cartItems.get(i);
+                cartItem.setQuantity(cartItem.getQuantity()-1);
+                cartItem.setTotalPrice(movie.getMoviePrice() * cartItem.getQuantity());
+                cartItemService.addCartItem(cartItem);
+
+                return;
+            }
+        }
+    }
+
     @PutMapping("/remove/{movieId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void removeItem (@PathVariable int movieId) {
