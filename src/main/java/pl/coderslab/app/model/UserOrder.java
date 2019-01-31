@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,7 +16,7 @@ public class UserOrder implements Serializable {
     @GeneratedValue
     private int orderId;
 
-    private Date orderDate;
+    private LocalDateTime orderDate;
 
     @OneToOne
     @JoinColumn(name = "cartId")
@@ -30,12 +31,11 @@ public class UserOrder implements Serializable {
     @JsonIgnore
     private User user;
 
-
-    public Date getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 

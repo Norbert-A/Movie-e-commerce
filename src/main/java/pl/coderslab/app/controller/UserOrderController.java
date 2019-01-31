@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.app.model.Cart;
-import pl.coderslab.app.model.CartItem;
 import pl.coderslab.app.model.User;
 import pl.coderslab.app.model.UserOrder;
 import pl.coderslab.app.service.CartItemService;
@@ -14,8 +13,8 @@ import pl.coderslab.app.service.CartService;
 import pl.coderslab.app.service.Impl.NotificationService;
 import pl.coderslab.app.service.UserOrderService;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
+
 
 @Controller
 public class UserOrderController {
@@ -39,8 +38,9 @@ public class UserOrderController {
         Cart cart = cartService.getCartById(cartId);
         cart.setGrandTotal(userOrderService.getOrderGrandTotal(cartId));
         order.setCart(cart);
-        Date dateNow = new Date();
-        order.setOrderDate(dateNow);
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        order.setOrderDate(dateTime);
 
         User user = cart.getUser();
         order.setUser(user);
@@ -56,8 +56,8 @@ public class UserOrderController {
 
 
         UserOrder order = new UserOrder();
-        Date dateNow = new Date();
-        order.setOrderDate(dateNow);
+        LocalDateTime dateTime = LocalDateTime.now();
+        order.setOrderDate(dateTime);
         Cart cart = cartService.getCartById(cartId);
         cart.setGrandTotal(userOrderService.getOrderGrandTotal(cartId));
 
